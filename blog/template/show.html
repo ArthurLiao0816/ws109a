@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>${title}</title>
+  <link
+    rel="icon"
+    href="https://cdn1.iconfinder.com/data/icons/jetflat-multimedia-vol-2/90/004_100_code_tag_brackets_coding_html_development-256.png"
+    type="image/icon type"
+  />
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css"
+    integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK"
+    crossorigin="anonymous"
+  />
+  <script
+    type="text/javascript"
+    src="https://www.gstatic.com/charts/loader.js"
+  ></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <style></style>
+</head>
+
+<body>
+  <script
+    src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js"
+    integrity="sha384-BOsAfwzjNJHrJ8cZidOg56tcQWfp6y72vEJ8xQ9w6Quywb24iOsW913URv1IS4GD"
+    crossorigin="anonymous"
+  ></script>
+  <div class="ml-3 p-3">
+    <div class="row">
+      <div class="col-md-6 col-12 text-center">
+        <h1 class="mb-3">${post.title}</h1>
+      </div>
+      <div class="col-md-6 col-12">
+        <p class="mb-3 mt-3"><em>-- by ${post.username}</em></p>
+      </div>
+    </div>
+  </div>
+  <div class="container w-75">
+    <p class="mb-3">${post.body}</p>
+  </div>
+  <div class="container">
+    <form class="border border-light" action="/post/${post.id}" method="post">
+      <button class="btn btn-primary" type="submit" name="btnlike" value="like">
+        <p class="card-text">
+          <i class="far fa-thumbs-up mr-1"></i>${post.like_num}
+        </p>
+      </button>
+      <button
+        class="btn btn-primary"
+        type="submit"
+        name="btndislike"
+        value="dislike"
+      >
+        <p class="card-text">
+          <i class="far fa-thumbs-down mr-1"></i>${post.dislike_num}
+        </p>
+      </button>
+    </form>
+  </div>
+</body>

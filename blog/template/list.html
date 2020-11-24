@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>${title}</title>
+  <link
+    rel="icon"
+    href="https://cdn1.iconfinder.com/data/icons/jetflat-multimedia-vol-2/90/004_100_code_tag_brackets_coding_html_development-256.png"
+    type="image/icon type"
+  />
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css"
+    integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK"
+    crossorigin="anonymous"
+  />
+  <script
+    type="text/javascript"
+    src="https://www.gstatic.com/charts/loader.js"
+  ></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <style></style>
+</head>
+
+<body>
+  <script
+    src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js"
+    integrity="sha384-BOsAfwzjNJHrJ8cZidOg56tcQWfp6y72vEJ8xQ9w6Quywb24iOsW913URv1IS4GD"
+    crossorigin="anonymous"
+  ></script>
+  <div class="ml-3 p-3 text-center">
+    <h4 class="mb-3">Posts</h4>
+    <p class="mb-3">
+      ${(user == null) ? '<a href="/login" class="text-decoration-none"
+        >Login</a
+      >
+      to Create a Post!' : 'Welcome ' + user.username + ', You may
+      <a href="/post/new" class="text-decoration-none">Create a Post</a> or
+      <a href="/logout" class="text-decoration-none">Logout</a> !'}
+    </p>
+    <p class="mb-3">There are <strong>${posts.length}</strong> posts!</p>
+  </div>
+  <div id="posts" class="container">
+    <div class="row">${list.join('\n')}</div>
+  </div>
+
+  <div class="p-3 col-7 mx-auto">
+    <div class="card card-cascade wider reverse ml-3">
+      <div class="card-body card-body-cascade">
+        <h5 class="card-title">
+          <form action="/del/${post.id}" method="POST">
+            <div class="row">
+              <div class="col-11">${post.title}</div>
+              ${ user != null ? user.username == post.username ? '
+              <div class="col-1">
+                <button
+                  type="submit"
+                  class="btn-close"
+                  aria-label="Close"
+                ></button>
+              </div>
+              ' : "" : "" }
+            </div>
+          </form>
+        </h5>
+        <p class="card-text text-right">-- by ${post.username}</p>
+        <a
+          href="/post/${post.id}"
+          class="black-text float-right text-decoration-none"
+        >
+          <h5>Read post <i class="fas fa-chevron-right"></i></h5>
+        </a>
+      </div>
+    </div>
+  </div>
+</body>
