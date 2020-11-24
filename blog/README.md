@@ -10,10 +10,10 @@
 ## Contents
 
 1. [prettify origin web page](#Prettify)
-2. [add like/dislike comment function](#Like-/-Dislike-comment)
-3. [add post deleting function](#Post-Deleting)
+2. [add like/dislike comment function](#like--dislike-comment)
+3. [add post deleting function](#post-deleting)
 
-- [demo](src\demo.mp4)
+- [demo](https://github.com/ArthurLiao0816/ws109a/blob/master/blog/src/demo.mp4)
 
 ## [Prettify](#Contents)
 
