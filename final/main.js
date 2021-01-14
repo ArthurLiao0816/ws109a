@@ -2,6 +2,7 @@ import { Application, Router } from "https://deno.land/x/oak/mod.ts";
 import * as render from "./render.js";
 import { DB } from "https://deno.land/x/sqlite/mod.ts";
 import { Session } from "https://deno.land/x/session@1.1.0/mod.ts";
+import { parse } from "https://deno.land/std/flags/mod.ts";
 
 const fighting = "(๑و•̀ω•́)و\n⇟⇟⇟";
 const finishing = " ~ (★´ω｀★)ゞ\n";
@@ -290,6 +291,9 @@ async function del(ctx) {
     ctx.response.body = render.loginUi();
   }
 }
-
+const { args } = Deno;
+const argPort = parse(args).port;
+const __port = argPort ? Number(argPort) : 8000;
 console.log("Server run at http://127.0.0.1:8000");
-await app.listen({ hostname: "127.0.0.1", port: 8000 });
+console.log(argPort);
+await app.listen({ hostname: "0.0.0.0", port: __port });

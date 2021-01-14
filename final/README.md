@@ -1,9 +1,12 @@
 # Blog
 
-- mid term project of web design
+- final project of web design
 
 - this project is an extension of course sample
+
   > reference ⇻ [https://gitlab.com/ccc109/ws/-/tree/master/deno/07-session/03-blogSignup](https://gitlab.com/ccc109/ws/-/tree/master/deno/07-session/03-blogSignup)
+
+- this project is online version of the mid term one
 
 ---
 
@@ -12,6 +15,7 @@
 1. [prettify origin web page](#Prettify)
 2. [add like/dislike comment function](#like--dislike-comment)
 3. [add post deleting function](#post-deleting)
+4. [deploy](#deploy)
 
 - [demo](https://github.com/ArthurLiao0816/ws109a/blob/master/blog/src/demo.mp4)
 
@@ -249,5 +253,30 @@
         : ""
     }
     ```
-* simple demo
-  ![](src/delete.png)
+
+## [Deploy](#Contents)
+
+1. download [heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#download-and-install)
+2. home page -> create new app
+3. Setting -> Buildpacks -> Add buildpack -> add the below url ( for deno )
+   `https://github.com/chibat/heroku-buildpack-deno.git`
+4. cmd -> `heroku login` -> `cd my-project/` -> `git init` -> `heroku git:remote -a appname`
+
+5. make some change to the code
+
+```
+  import { parse } from "https://deno.land/std/flags/mod.ts";
+  const { args } = Deno;
+  const argPort = parse(args).port;
+  const __port = argPort ? Number(argPort) : 8000;
+  console.log(argPort);
+  await app.listen({ hostname: "0.0.0.0", port: __port });
+```
+
+7. add a `Procfile` file and write this down
+   `web: deno run -A filename --port=${PORT}`
+
+8. `git add .` -> `git commit -am "make it better"` -> `git push heroku master` ( not `main`, it's `master` )
+9. done~
+
+- [simple demo](https://drive.google.com/file/d/1-z-I-zPFb-cy75eHFDwdrh7jZw__ApuC/view?usp=sharing)

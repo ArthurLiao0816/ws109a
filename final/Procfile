@@ -1,1 +1,1 @@
- web gunicorn LineBot:app –preload
+web: deno run -A main.js --port=${PORT}
